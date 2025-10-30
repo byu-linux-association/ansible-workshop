@@ -1,0 +1,15 @@
+---
+  - name: Place Bashrc in right directories
+    hosts: Ubuntu
+    become: yes
+    tasks:
+      - name: Ensure Bash is installed
+        ansible.builtin.apt:
+          name: bash
+          state: present
+      - name: Copy .bashrc over to root's home directory
+        ansible.builtin.copy:
+          src: files/.bashrc
+          dest: /root/.bashrc
+          owner: "root"
+          mode: "664"

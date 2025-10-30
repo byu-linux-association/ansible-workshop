@@ -1,0 +1,20 @@
+---
+  - name: Create a Dummy User and their home directory
+    hosts: Ubuntu
+    become: yes
+      - name: Create user
+        user:
+          create_home: true
+          group: users
+          groups:
+            - usb
+            - video
+            - floppy
+            - input
+          name: "dummy"
+      - name: Copy Bashrc
+        copy:
+          src: files/.bashrc
+          dest: /home/dummy/.bashrc
+          owner: "dummy"
+          mode: "644"
