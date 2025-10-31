@@ -2,6 +2,7 @@
   - name: Create a Dummy User and their home directory
     hosts: Ubuntu
     become: yes
+    tasks:
       - name: Create user
         user:
           create_home: true

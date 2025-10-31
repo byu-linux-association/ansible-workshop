@@ -3,6 +3,18 @@
 ## Setting up the local files
 
 ### Installing Git
+You will need Git to clone the repo. You could also download the source code from GitHub, but Git is an extremely useful tool. 
+If you are a CS major then you will need to learn it at some point.
+
+### For Linux
+If you are on Linux, hopefully you know your package manager and how to install programs.
+
+### For Windows
+You can download it from [this link.](https://git-scm.com/downloads)
+
+### For MacOS
+You might already have it if you have ever installed XCode.
+If not you can download it from [this link.](https://git-scm.com/downloads)
 
 ### Cloning the Repository
 Make sure you can put it somewhere where you can find it.
@@ -19,14 +31,24 @@ cd ansible-workshop
 ### Setting Up Ubuntu Docker Container
 
 #### Install Docker Desktop
+Go to [this webpage](https://docs.docker.com/desktop/) and scroll to the bottom.
+Pick your operating system and click on the correct link.
+
+This should install Docker Desktop and Docker for you.
+Once set up, continue with the guide.
+
 
 #### Running the Container
-```bash
+In the terminal you used to clone the repository earlier, run these commands.
 
+If the commands don't work, then close the terminal window and navigate back to the cloned repository and try it again.
+
+```bash
 docker build -t ansible_ubuntu .
 docker run -dit p 3000:22 -p 3001:80 --name ansible_workshop ansible_ubuntu:latest
-
 ```
+
+This command will build our container and then run it.
 
 #### Connecting to the Container
 
@@ -59,7 +81,7 @@ scp ~\.ssh\id_ed25519.pub root@127.0.0.1:/.ssh/authorized_keys
 ## Setting up Development Environment
 We are going to be using VS Code for the completion of the tasks.
 
-Install VS Code [https://code.visualstudio.com/download](by going here).
+Install VS Code [by going here](https://code.visualstudio.com/download).
 
 Once installed open the Command Palette by hitting `F1`, `Ctrl+Shift+P`, or `Command+Shift+P` if you are on MacOS.
 
@@ -156,7 +178,7 @@ ansible-playbook setup_bashrc.yaml
 
 After that runs, type the following command to see your changes.
 ```bash
-. .bashrc
+. ~/.bashrc
 ```
 
 ## Tasks
@@ -174,6 +196,20 @@ You will also need to use this command to hash your user's password
 openssl passwd -6 --stdin
 ```
 
+### Task 3 Edit `/etc/hosts` with a few fake hosts
+This task requires you to edit a file.
+Look up the documentation for editing a file and get a feel for what you need to do.
+
+Your job is to add a few hosts to the end of the file.
+I recommend taking a look at `/etc/hosts` to see the format.
+We are also not replacing the file, just editing it.
+
+### Task 4 Create Playbook that Calls other Playbooks
+Now we want a convient way to run all of the playbooks together so we don't have to run `ansible-playbook` on every playbook.
+That could take too long.
+Instead, we want to make it so that we can run all of the playbooks with one command.
+
+Your tasks is to figure this out and write the playbook that calls the example playbooks and the playbooks you wrote for the other tasks.
 
 ## Clean up
 ```bash
@@ -183,3 +219,7 @@ docker stop ansible_workshop
 # Optionally delete the container
 docker rm ansible_workshop
 ```
+
+## Summary
+Ansible is a really powerfull tool whose full power couldn't be expressed in this activity.
+If this interests you, then you should look into it more.

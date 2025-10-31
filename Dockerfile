@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get install -y openssh-server git
+RUN apt-get update && apt-get install -y openssh-server git sudo
 
 # Configure SSH
 RUN mkdir /var/run/sshd
