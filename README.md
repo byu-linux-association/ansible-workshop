@@ -72,6 +72,8 @@ ssh -p 3000 root@127.0.0.1
 Then it will ask you which config to modify. 
 Select the config for your user (the one under your home folder).
 
+Then hit connect in the bottom right corner.
+
 VS Code will now be connected to the container.
 
 ## Installing Ansible
@@ -83,9 +85,15 @@ Then type in the following commands to install Ansible.
 
 ```bash
 apt update
-apt install software-properties-common
-apt add-apt-repository --yes --update ppa:ansible/ansible
 apt install ansible
+# apt install software-properties-common
+# add-apt-repository --yes --update ppa:ansible/ansible
+```
+
+if the above commands don't work, try the follow commands, then the above commands again.
+```bash
+apt install software-properties-common
+add-apt-repository --yes --update ppa:ansible/ansible
 ```
 
 Ansible should now be installed.
@@ -98,7 +106,12 @@ First we need to create the directory for the file.
 mkdir -p /etc/ansible/
 ```
 
-Now create a new file in VS Code with the path `/etc/ansible/hosts`
+Then we need to create the file so we can edit it in VS Code.
+```bash
+touch /etc/ansible/hosts
+```
+
+Now open the file in VS Code with the path `/etc/ansible/hosts`
 
 This file is where you can put all the machines you wish to configure with your ansible scripts. 
 The real magic of Ansible is that you can deploy hundreds of machines at once.
