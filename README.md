@@ -45,7 +45,7 @@ If the commands don't work, then close the terminal window and navigate back to 
 
 ```bash
 docker build -t ansible_ubuntu .
-docker run -dit p 3000:22 -p 3001:80 --name ansible_workshop ansible_ubuntu:latest
+docker run -dit -p 3000:22 -p 3001:80 --name ansible_workshop ansible_ubuntu:latest
 ```
 
 This command will build our container and then run it.
